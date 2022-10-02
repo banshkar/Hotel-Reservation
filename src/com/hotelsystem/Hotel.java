@@ -5,15 +5,17 @@ public class Hotel {
     private String hotelName;
     private String customerType;
     private int date;
-    private String weekendDay;
+    private int weekdays;
+    private int  weekend;
     private int totalCost;
     public Hotel(){
     }
-    public Hotel(String hotelName, String customerType, int date, int totalCost) {
+    public Hotel(String hotelName, String customerType, int date,int weekdays, int weekend){
         this.hotelName = hotelName;
         this.customerType = customerType;
         this.date = date;
-        this.totalCost = totalCost;
+        this.weekdays=weekdays;
+        this.weekend=weekend;
     }
     public String getHotelName() {
         return hotelName;
@@ -24,12 +26,17 @@ public class Hotel {
     public int getDate() {
         return date;
     }
-    public String getWeekendDay() {
-        return weekendDay;
+    public int getWeekdays() {
+        return weekdays;
     }
     public int getTotalCost() {
         return totalCost;
     }
+
+    public int getWeekend() {
+        return weekend;
+    }
+
     public  int getDate(String date){
         String newDate ="";
         if(date.charAt(0)=='0'){
@@ -64,7 +71,8 @@ public class Hotel {
                 "hotelName='" + hotelName + '\'' +
                 ", customerType='" + customerType + '\'' +
                 ", date=" + date +
-                ", weekendDay='" + weekendDay + '\'' +
+                ", weekdays=" + weekdays +
+                ", weekend=" + weekend +
                 ", totalCost=" + totalCost +
                 '}';
     }
