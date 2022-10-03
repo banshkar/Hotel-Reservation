@@ -4,22 +4,23 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
-
 public class Hotel {
     private String hotelName;
     private String customerType;
     private int date;
     private int weekdays;
     private int  weekend;
+    private int rating;
     private int totalCost;
     public Hotel(){
     }
-    public Hotel(String hotelName, String customerType, int date,int weekdays, int weekend){
+    public Hotel(String hotelName, String customerType, int date,int weekdays, int weekend,int rating){
         this.hotelName = hotelName;
         this.customerType = customerType;
         this.date = date;
         this.weekdays=weekdays;
         this.weekend=weekend;
+        this.rating =rating;
     }
     public String getHotelName() {
         return hotelName;
@@ -106,6 +107,7 @@ public class Hotel {
                 ", date=" + date +
                 ", weekdays=" + weekdays +
                 ", weekend=" + weekend +
+                ", rating=" + rating +
                 ", totalCost=" + totalCost +
                 '}';
     }
