@@ -31,6 +31,9 @@ public class Hotel {
     public int getDate() {
         return date;
     }
+    public int getRating() {
+        return rating;
+    }
     public int getWeekdays() {
         return weekdays;
     }
@@ -55,10 +58,15 @@ public class Hotel {
         int day =Integer.parseInt(newDate);
         return day;
     }
-    public int findMniCost(ArrayList<Integer>arrayList){
+    public int findMiniCost(ArrayList<Integer>arrayList){
         List<Integer>sortedList =arrayList.stream().sorted().collect(Collectors.toList());
         int miniCost =sortedList.get(0);
         return miniCost;
+    }
+    public int findMiniRating(ArrayList<Integer>arrayList){
+        List<Integer>sortedList =arrayList.stream().sorted().collect(Collectors.toList());
+        int miniRating =sortedList.get(0);
+        return miniRating;
     }
     public void checkAvailable(ArrayList<Hotel>arrayList,String customerType,String date_1,String date_2) {
         boolean found =false;
@@ -90,10 +98,38 @@ public class Hotel {
               iterator =arrayList.iterator();
               while (iterator.hasNext()){
                   Hotel hotel =iterator.next();
-                 if(hotel.getTotalCost(hotel.weekend,hotel.getWeekdays())==findMniCost(costList)){
-                     System.out.println("Hotel Name "+hotel.getHotelName()+"  $"+findMniCost(costList));
+                 if(hotel.getTotalCost(hotel.weekend,hotel.getWeekdays())==findMiniCost(costList)){
+                     System.out.println("Hotel Name "+hotel.getHotelName()+"  $"+findMiniCost(costList));
                  }
               }
+        }
+        else {
+            System.out.println("not ");
+        }
+    }
+    public void findCheapestHotelWithRating(ArrayList<Hotel>arrayList ,String date_1,String date_2) {
+        boolean found =false;
+        ArrayList<Integer>ratingList=new ArrayList<>();
+        ArrayList<Integer>costList=new ArrayList<>();
+        Iterator<Hotel> iterator = arrayList.iterator();
+        while (iterator.hasNext()) {
+            Hotel hotel = iterator.next();
+            if (hotel.date >= getDate(date_1) && hotel.date <= getDate(date_2)){
+                int ratings =hotel.rating;
+                int cost =getTotalCost(hotel.getWeekend(),hotel.getWeekdays());
+                costList.add(cost);
+                ratingList.add(ratings);
+                found=true;
+            }
+        }
+        if (found){
+            iterator =arrayList.iterator();
+            while (iterator.hasNext()){
+                Hotel hotel =iterator.next();
+                if(hotel.rating==findMiniRating(ratingList) &&hotel.getTotalCost(hotel.weekend,hotel.getWeekdays())==findMiniCost(costList)){
+                    System.out.println("Hotel Name "+hotel.getHotelName()+" ,rating "+findMiniRating(ratingList)+", $"+hotel.getTotalCost(hotel.getWeekend(),hotel.getWeekdays()));
+                }
+            }
         }
         else {
             System.out.println("not ");

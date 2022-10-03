@@ -10,7 +10,7 @@ public class Main {
         System.out.println();
         System.out.println("...............................WELCOME TO  HOTEL RESERVATION SYSTEM .......................");
         System.out.println();
-        Hotel check =new Hotel();
+        Hotel hotelSystem =new Hotel();
         Hotel hotel_1 =new Hotel("LakeWood","Regular",30,180,150,4);
         Hotel hotel_2 =new Hotel("RidgeWood","Reward", 15, 80,90,3);
         Hotel hotel_3 =new Hotel("Karma","Regular", 14 ,600,700,5);
@@ -37,6 +37,7 @@ public class Main {
             System.out.println(" 1. enter for check available");
             System.out.println(" 2. enter for all display");
             System.out.println(" 3. enter find cheapest hotel");
+            System.out.println(" 4. enter find cheapest hotel base rating");
             System.out.println(" 0. enter for exit");
             choice =sc.nextInt();
             switch (choice){
@@ -48,7 +49,7 @@ public class Main {
                     String date_1 =sc.nextLine();
                     System.out.println("Enter date_2 format(01sep2022)");
                     String date_2 =sc.nextLine();
-                   check.checkAvailable(hotels,customerType,date_1,date_2);
+                    hotelSystem.checkAvailable(hotels,customerType,date_1,date_2);
                    break;
                 case 2:
                     Iterator<Hotel>iterator = hotels.iterator();
@@ -58,7 +59,10 @@ public class Main {
                     }
                     break;
                 case 3:
-                    check.findCheapestHotel(hotels,"14sep2022","16sep2022");
+                    hotelSystem.findCheapestHotel(hotels,"14sep2022","16sep2022");
+                    break;
+                case 4:
+                    hotelSystem.findCheapestHotelWithRating(hotels,"14sep2022","16sep2022");
                     break;
             }
         }while (choice!=0);
