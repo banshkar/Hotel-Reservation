@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
@@ -75,6 +77,29 @@ public class Main {
                     break;
                 case 6:
                     hotelSystem.findBestHotelForRewardsCustomer(hotels,"12sep2022","16sep2022","Reward");
+                    break;
+                case 7:
+                    Pattern pattern =Pattern.compile("^[0-9]{2}+[a-zA-Z]+?(2022)+$");
+                    Pattern pattern1 =Pattern.compile("^[A-Z]{1}+[a-zA-Z]+$");
+                    try {
+                        line = sc.nextLine();
+                        System.out.println("Enter first date:");
+                        String firstDate = sc.nextLine();
+                        System.out.println("Enter first date:");
+                        String secondDate = sc.nextLine();
+                        System.out.println("Enter first date:");
+                        String customerTyp = sc.nextLine();
+                        Matcher matcher = pattern.matcher(firstDate);
+                        Matcher matcher1 = pattern.matcher(secondDate);
+                        Matcher matcher2 = pattern1.matcher(customerTyp);
+                        if (matcher1.matches() && matcher.matches() && matcher2.matches()) {
+                            hotelSystem.findBestHotelForRewardsCustomer(hotels, firstDate, secondDate, customerTyp);
+                        } else {
+                            System.out.println("Enter valid input");
+                        }
+                    }catch (Exception e){
+                        System.out.println(e);
+                    }
                     break;
             }
         }while (choice!=0);
