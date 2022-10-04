@@ -75,7 +75,7 @@ public class Hotel {
     }
     public int findMaxRating(ArrayList<Integer>arrayList){
         List<Integer>sortedList =arrayList.stream().sorted().collect(Collectors.toList());
-        int maxRating=sortedList.get(sortedList.size());
+        int maxRating=sortedList.get(sortedList.size()-1);
         return  maxRating;
     }
     public void checkAvailable(ArrayList<Hotel>arrayList,String customerType,String date_1,String date_2) {
@@ -114,7 +114,7 @@ public class Hotel {
               }
         }
         else {
-            System.out.println("not ");
+            System.out.println("No Available");
         }
     }
     public void findCheapestHotelWithRating(ArrayList<Hotel>arrayList ,String date_1,String date_2) {
@@ -142,7 +142,7 @@ public class Hotel {
             }
         }
         else {
-            System.out.println("not ");
+            System.out.println("No Available");
         }
     }
     public void findBestHotel(ArrayList<Hotel>arrayList ,String date_1,String date_2) {
@@ -162,12 +162,43 @@ public class Hotel {
             while (iterator.hasNext()){
                 Hotel hotel =iterator.next();
                 if(hotel.getTotalCost(hotel.weekend,hotel.getWeekdays())==findMaxCost(costList)){
-                    System.out.println("Hotel Name: "+hotel.getHotelName()+"  $"+findMaxCost(costList));
+                    System.out.println("Hotel Name: "+hotel.getHotelName()+"  $"+findMiniCost(costList));
                 }
             }
         }
         else {
-            System.out.println("not ");
+            System.out.println("No Available");
+        }
+    }
+    public void findBestHotelForRewardsCustomer(ArrayList<Hotel>arrayList ,String date_1,String date_2,String customerTyre) {
+        boolean found =false;
+        ArrayList<Integer>costList=new ArrayList<>();
+        ArrayList<Integer>ratingList=new ArrayList<>();
+        Iterator<Hotel> iterator = arrayList.iterator();
+        try {
+            while (iterator.hasNext()) {
+                Hotel hotel = iterator.next();
+                if (hotel.customerType.equals(customerTyre) && hotel.date >= getDate(date_1) && hotel.date <= getDate(date_2)) {
+                    int cost = getTotalCost(hotel.getWeekend(), hotel.getWeekdays());
+                    costList.add(cost);
+                    ratingList.add(hotel.rating);
+                    found = true;
+                }
+            }
+            if (found) {
+                iterator = arrayList.iterator();
+                while (iterator.hasNext()) {
+                    Hotel hotel = iterator.next();
+                    if (hotel.customerType.equals(customerTyre) && hotel.getTotalCost(hotel.weekend, hotel.getWeekdays()) == findMaxCost(costList) && hotel.rating == findMaxRating(ratingList)) {
+                        System.out.println("Hotel Name: " + hotel.getHotelName() + "  $" + findMaxCost(costList) + ",for " + hotel.customerType + " customer");
+                    }
+                }
+
+            } else {
+                System.out.println(" No Available  ");
+            }
+        }catch (Exception e){
+            System.out.println(e);
         }
     }
     @Override
