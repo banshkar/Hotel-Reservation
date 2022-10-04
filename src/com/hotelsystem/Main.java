@@ -14,8 +14,8 @@ public class Main {
         Hotel hotel_1 =new Hotel("LakeWood","Regular",30,180,150,4);
         Hotel hotel_2 =new Hotel("RidgeWood","Reward", 15, 80,90,3);
         Hotel hotel_3 =new Hotel("Karma","Regular", 14 ,600,700,5);
-        Hotel hotel_4 =new Hotel("HanShRaj","Reward", 30,  120,140,4);
-        Hotel hotel_5 =new Hotel("DBCity","Reward", 25 ,1500,1200,3);
+        Hotel hotel_4 =new Hotel("HanShRaj","Reward", 30,  60,80,4);
+        Hotel hotel_5 =new Hotel("DBCity","Reward", 25 ,80,30,3);
         Hotel hotel_6 =new Hotel("Golden","Regular", 20 ,220,210,3);
         Hotel hotel_7 =new Hotel("Milan","Reward", 10, 80,120,5);
         Hotel hotel_9 =new Hotel("Vmart","Regular", 15, 90,80,4);
