@@ -38,6 +38,7 @@ public class Main {
             System.out.println(" 2. enter for all display");
             System.out.println(" 3. enter find cheapest hotel");
             System.out.println(" 4. enter find cheapest hotel base rating");
+            System.out.println(" 5. enter find best hotel ");
             System.out.println(" 0. enter for exit");
             choice =sc.nextInt();
             switch (choice){
@@ -63,6 +64,9 @@ public class Main {
                     break;
                 case 4:
                     hotelSystem.findCheapestHotelWithRating(hotels,"14sep2022","16sep2022");
+                    break;
+                case 5:
+                    hotelSystem.findBestHotel(hotels,"14sep2022","16sep2022");
                     break;
             }
         }while (choice!=0);
