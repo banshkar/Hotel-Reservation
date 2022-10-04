@@ -46,6 +46,8 @@ public class Main {
             System.out.println(" 4. enter find cheapest hotel base rating");
             System.out.println(" 5. enter find best hotel ");
             System.out.println(" 6. enter find cheapest hotel and best rating for rewards customer");
+            System.out.println(" 7. enter find cheapest hotel and best rating for rewards customer");
+            System.out.println(" 8. enter find cheapest hotel and best rating for regular customer");
             System.out.println(" 0. enter for exit");
             choice =sc.nextInt();
             switch (choice){
@@ -80,20 +82,35 @@ public class Main {
                     break;
                 case 7:
                     Pattern pattern =Pattern.compile("^[0-9]{2}+[a-zA-Z]+?(2022)+$");
-                    Pattern pattern1 =Pattern.compile("^[A-Z]{1}+[a-zA-Z]+$");
                     try {
                         line = sc.nextLine();
                         System.out.println("Enter first date:");
                         String firstDate = sc.nextLine();
-                        System.out.println("Enter first date:");
+                        System.out.println("Enter second date:");
                         String secondDate = sc.nextLine();
-                        System.out.println("Enter first date:");
-                        String customerTyp = sc.nextLine();
                         Matcher matcher = pattern.matcher(firstDate);
                         Matcher matcher1 = pattern.matcher(secondDate);
-                        Matcher matcher2 = pattern1.matcher(customerTyp);
-                        if (matcher1.matches() && matcher.matches() && matcher2.matches()) {
-                            hotelSystem.findBestHotelForRewardsCustomer(hotels, firstDate, secondDate, customerTyp);
+                        if (matcher1.matches() && matcher.matches()) {
+                            hotelSystem.findBestHotelForRewardsCustomer(hotels, firstDate, secondDate, "Reward");
+                        } else {
+                            System.out.println("Enter valid input");
+                        }
+                    }catch (Exception e){
+                        System.out.println(e);
+                    }
+                    break;
+                case 8:
+                     pattern =Pattern.compile("^[0-9]{2}+[a-zA-Z]+?(2022)+$");
+                    try {
+                        line = sc.nextLine();
+                        System.out.println("Enter first date:");
+                        String firstDate = sc.nextLine();
+                        System.out.println("Enter second date:");
+                        String secondDate = sc.nextLine();
+                        Matcher matcher = pattern.matcher(firstDate);
+                        Matcher matcher1 = pattern.matcher(secondDate);
+                        if (matcher1.matches() && matcher.matches()) {
+                            hotelSystem.findBestHotelForRewardsCustomer(hotels, firstDate, secondDate, "Regular");
                         } else {
                             System.out.println("Enter valid input");
                         }
